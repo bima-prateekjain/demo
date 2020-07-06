@@ -27,6 +27,8 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run: |
+        git config --global user.name "Github bot"
+        git config --global user.email "github@milvik.se"
         mvn release:clean
         mvn release:prepare -s $GITHUB_WORKSPACE/settings.xml
         mvn release:perform -s $GITHUB_WORKSPACE/settings.xml
