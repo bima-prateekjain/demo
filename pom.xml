@@ -102,7 +102,7 @@
 					<!-- Java-Doc plugin -->
 
 					<!-- GPG plugin -->
-					<plugin>
+					<!-- <plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
 						<version>${version.maven-gpg-plugin}</version>
@@ -115,7 +115,7 @@
 								</goals>
 							</execution>
 						</executions>
-					</plugin>
+					</plugin> -->
 					<!-- GPG plugin -->
 				</plugins>
 			</build>
