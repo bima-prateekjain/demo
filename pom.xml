@@ -22,7 +22,9 @@
 	</properties>
 
 	<scm>
+		<connection>scm:git:git@github.com:bima-prateekjain/demo.git</connection>
 		<developerConnection>scm:git:git@github.com:bima-prateekjain/demo.git</developerConnection>
+		<url>https://github.com/bima-prateekjain/demo</url>
 		<tag>demo-0.0.2</tag>
 	</scm>
 
