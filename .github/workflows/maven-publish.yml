@@ -25,6 +25,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - run: |
+        mkdir -m 700 ~/.ssh
+        echo -e "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFAg+qSEhbMQ2ZS429WmGiyrsexiUCypGdTFBm/q6B8GwDb/kPM/IFqg53uxVt9TSoL0XN4AChD1BEnuKkb+3AorWEXt4cUqKGDqV30gC/GvXRknf/OwYGz7pwInsQwQXUiPHVzUkwTr9SqgISzr5P7UYRTkIwveWc32wUr5s5pPtKozPHFYP0YFKeph3+2oOn5ZtdmUkERgif6BOMbvD2EbPzFdfqUaTdGpDDJknqngKvstfaSzG8f2MXOQFhc6rbfLcGJTpxd5pbMLEEm/5ce0Boeyh7z0ZR1LzmnQnopUfRTBl/WFmJFf1GC2lkV9OVMYZqpWlVsC+vLclo2+Kz prateek@Prateeks-MacBook-Pro.local" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
     - name: Publish to GitHub Packages Apache Maven
       run: |
         git config --global user.name "Github bot"
