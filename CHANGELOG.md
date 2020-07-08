@@ -1,4 +1,4 @@
-- c91dc9a -  (HEAD, tag: v106, origin/master) Merge branch 'master' of github.com:bima-prateekjain/demo:  (45 seconds ago) (Prateek Jain)
-- 43c99b8 -  Changed pom.xml file:  (64 seconds ago) (Prateek Jain)
-- 49e7428 -  Added test:  (2 minutes ago) (Prateek Jain)
-- 3196b57 -  (HEAD, tag: v105, origin/master) changelog added:  (42 seconds ago) (Prateek Jain)
+- c91dc9a - (HEAD, tag: v106, origin/master) Merge branch 'master' of github.com:bima-prateekjain/demo:  (45 seconds ago) (Prateek Jain)
+- 43c99b8 - Changed pom.xml file:  (64 seconds ago) (Prateek Jain)
+- 49e7428 - Added test:  (2 minutes ago) (Prateek Jain)
+- 3196b57 - (HEAD, tag: v105, origin/master) changelog added:  (42 seconds ago) (Prateek Jain)
