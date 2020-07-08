@@ -48,7 +48,7 @@ jobs:
           echo -e "${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
           git config --local user.email "prateek.jain@milvik.se"
           git config --local user.name "Prateek Jain"
-          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
+          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && git push origin master && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
