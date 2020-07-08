@@ -1,3 +1,7 @@
+# Release v108
+- 0d6b6bc -  (HEAD, tag: v108, origin/master) Merge branch 'master' of github.com:bima-prateekjain/demo:  (53 seconds ago) (Prateek Jain)
+- a858da1 -  Changed action:  (71 seconds ago) (Prateek Jain)
+- 849e37b -  changed test:  (2 minutes ago) (Prateek Jain)
 # Release refs/tags/v107
 - 5622425 -  (HEAD, tag: v107, origin/master) Added test file:  (47 seconds ago) (Prateek Jain)
 - 9acc091 -  changed pom:  (75 seconds ago) (Prateek Jain)
