@@ -23,8 +23,8 @@ jobs:
         id: version
         uses: ./
 
-      - name: Create Changelog
-        id: changelog
+      - name: Create Changelog file
+        id: changelog-file
         run: |
           git log ${{ steps.version.outputs.last }}..${{ github.sha }} --pretty=oneline > CHANGELOG.md
           git config --local user.email "prateek.jain@milvik.se"
