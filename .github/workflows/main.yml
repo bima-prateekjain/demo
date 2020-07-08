@@ -45,6 +45,7 @@ jobs:
       - name: Create Changelog file
         id: changelog-file
         run: |
+          git checkout master
           echo -e "${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
           git config --local user.email "prateek.jain@milvik.se"
           git config --local user.name "Prateek Jain"
