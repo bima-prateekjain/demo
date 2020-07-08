@@ -33,7 +33,7 @@ jobs:
         id: changelog
         run: |
           printf "version tag:%s\n" "${{ steps.tags.outputs.current_tag }}...${{ steps.tags.outputs.previous_tag }}"
-          changelog=$(git log --first-parent --pretty=format:"- %h - %d %s: %b (%cr) (%an)" ${{ steps.tags.outputs.current_tag }}...${{ steps.tags.outputs.previous_tag }})
+          changelog=$(git log --first-parent --pretty=format:"- [%h](https://github.com/${{ github.repository }}/commit/%H) - %d %s: %b (%cr) (%an)" ${{ steps.tags.outputs.current_tag }}...${{ steps.tags.outputs.previous_tag }})
           printf "changelog:%s\n" "${changelog}"
           changelog="${changelog//'%'/'%25'}"
           printf "changelog:%s\n" "${changelog}"
@@ -47,7 +47,7 @@ jobs:
         run: |
           git checkout master
           tag_version=$(echo "${{ github.ref }}" | sed -e "s/refs\/tags\///g")
-          echo -e "# Release $tag_version\n${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
+          echo -e "# Release $tag_version ({{ github.repository }})\n${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
           git config --local user.email "prateek.jain@milvik.se"
           git config --local user.name "Prateek Jain"
           git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && git push origin master && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
