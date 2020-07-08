@@ -19,17 +19,6 @@ jobs:
       - name: Fetch git history
         run: |
           git fetch --prune --unshallow
-      - name: Find next version
-        id: version
-        uses: ./
-
-      - name: Create Changelog file
-        id: changelog-file
-        run: |
-          git log ${{ steps.version.outputs.last }}..${{ github.sha }} --pretty=oneline > CHANGELOG.md
-          git config --local user.email "prateek.jain@milvik.se"
-          git config --local user.name "Prateek Jain"
-          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
       - name: Parse tags
         shell: bash
         id: tags
@@ -53,6 +42,13 @@ jobs:
           changelog="${changelog//$'\r'/'%0D'}"
           printf "changelog:%s\n" "${changelog}"
           echo "::set-output name=changelog::$changelog"
+      - name: Create Changelog file
+        id: changelog-file
+        run: |
+          echo -e "${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
+          git config --local user.email "prateek.jain@milvik.se"
+          git config --local user.name "Prateek Jain"
+          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
