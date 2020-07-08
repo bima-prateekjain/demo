@@ -46,7 +46,8 @@ jobs:
         id: changelog-file
         run: |
           git checkout master
-          echo -e "# Release ${{ github.ref }}\n${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
+          tag_version=$(echo "${{ github.ref }}" | sed -e "s/refs\/tags\///g")
+          echo -e "# Release $tag_version\n${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
           git config --local user.email "prateek.jain@milvik.se"
           git config --local user.name "Prateek Jain"
           git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && git push origin master && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
