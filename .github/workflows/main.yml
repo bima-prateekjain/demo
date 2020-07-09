@@ -44,6 +44,8 @@ jobs:
           echo "::set-output name=changelog::$changelog"
       - name: Create Changelog file
         id: changelog-file
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git checkout master
           tag_version=$(echo "${{ github.ref }}" | sed -e "s/refs\/tags\///g")
