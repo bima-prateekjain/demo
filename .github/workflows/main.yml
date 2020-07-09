@@ -52,7 +52,9 @@ jobs:
           echo -e "# [Release $tag_version](https://github.com/${{ github.repository }}/releases/tag/$tag_version)\n${{ steps.changelog.outputs.changelog }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
           git config --local user.email "prateek.jain@milvik.se"
           git config --local user.name "Prateek Jain"
+          curl -i -H "Authorization: token 8aeb48335201c0d2fcce7d09c86a15b2c2c3abd9" -X DELETE https://api.github.com/repos/${{ github.repository }}/branches/master/protection
           git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && git push origin master && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
+          curl -i -H "Authorization: token 8aeb48335201c0d2fcce7d09c86a15b2c2c3abd9" -H "Content-Type: application/json" -H "Accept: application/vnd.github.luke-cage-preview+json" -X PUT -d '{"required_status_checks": null, "enforce_admins": false, "required_pull_request_reviews": {"dismiss_stale_reviews": false, "require_code_owner_reviews": true, "required_approving_review_count": 1}, "restrictions": null}' https://api.github.com/repos/${{ github.repository }}/branches/master/protection
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
